@@ -1,0 +1,19 @@
+record keeper to keep track of my matches of magic
+use whatever easy ui is in python
+uses mongodb
+backs up to google drive
+two tabs at first
+1st tab
+  input for format
+  input for your deck
+  input for opponents deck
+  input for w/l for 3 games
+  input for notes
+2nd tab
+   stats w/l ratio, graph of wins over time, etc pull from my melee records
+   dropdown to select by format/deck options, and against deck options
+3rd tab
+   select individual games to look at 
+   tools for deleting individual games
+long term feature would be option for tracking the sideboarding
+or clicking to get the actual decklist, dependent on their api
