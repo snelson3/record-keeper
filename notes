@@ -1,0 +1,4 @@
+libraries to install, not on pip
+
+pip install git+https://github.com/UmSenhorQualquer/pyforms.git --upgrade
+pip install git+https://github.com/UmSenhorQualquer/pysettings.git --upgrade

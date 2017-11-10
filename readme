@@ -4,11 +4,13 @@ uses mongodb
 backs up to google drive
 two tabs at first
 1st tab
-  input for format
-  input for your deck
-  input for opponents deck
+  default format/mydeck inputs to last
+  input for format (dropdown for option)
+  input for your deck (dropdown for option)
+  input for opponents deck (typeahead for option)
   input for w/l for 3 games
   input for notes
+clicking save should save, and clear the w/l notes and opp deck categories
 2nd tab
    stats w/l ratio, graph of wins over time, etc pull from my melee records
    dropdown to select by format/deck options, and against deck options
@@ -17,3 +19,26 @@ two tabs at first
    tools for deleting individual games
 long term feature would be option for tracking the sideboarding
 or clicking to get the actual decklist, dependent on their api
+
+
+tab 1
+
+
+#####################################
+#
+#   match entry | stats| view games
+#
+#   format: ________
+#   my deck: _______
+#   opponents deck: ________
+#
+#
+#    g1:  W L
+#    g2:  W L
+#    g3:  W L
+#
+#    notes: _________
+#
+#    save
+#
+#####################################
