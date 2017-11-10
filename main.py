@@ -117,8 +117,11 @@ class App:
         print("Opponents Deck", record['opp_deck'])
         print("Match Notes", record['notes'])
         self.db.addRecord(record)
-        #TODO blank out the inputs that are likely to change every match
-
+        self.ent_opp_deck.delete(0,tk.END)
+        self.ent_notes.delete(0,tk.END)
+        self.g1 = tk.StringVar()
+        self.g2 = tk.StringVar()
+        self.g3 = tk.StringVar()
 
 db = Ragnarok('records.db')
 root = tk.Tk()
