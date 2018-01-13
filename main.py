@@ -23,6 +23,9 @@ class Ragnarok:
         if i >= len(self.records):
             return None
         return list(reversed(self.records))[i]
+    def getResults(self, format=None, deck=None, oppdeck=None, fields=None):
+        pass
+    
 
 class App:
     def __init__(self, master, db):
