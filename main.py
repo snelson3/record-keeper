@@ -1,31 +1,5 @@
 import Tkinter as tk
-import os,json
-
-class Ragnarok:
-    def __init__(self, path):
-        self.path = path
-        self.records = []
-        self.load()
-    def load(self):
-        if not os.path.exists(self.path):
-            print "database doesn't exist, can't load"
-            return
-        with open(self.path) as f:
-            self.records = json.load(f)
-    def addRecord(self, rec):
-        self.records.append(rec)
-        self.save()
-    def save(self):
-        with open(self.path, "w") as f:
-            json.dump(self.records,f)
-    def getRecord(self,i):
-        # Get's the i'th newest record, or None if that index doesn't exist
-        if i >= len(self.records):
-            return None
-        return list(reversed(self.records))[i]
-    def getResults(self, format=None, deck=None, oppdeck=None, fields=None):
-        pass
-    
+from rkeeper.Ragnarok import Ragnarok
 
 class App:
     def __init__(self, master, db):
@@ -44,14 +18,22 @@ class App:
         self.txt_format.pack()
 
         self.ent_format = tk.Entry(frame)
-        self.ent_format.insert(0,self.db.getRecord(0)['format'])
+        last = self.db.getRecord()
+        last_format = ''
+        last_deck = ''
+        if last:
+            if 'format' in last:
+                last_format = last['format']
+            if 'deck' in last:
+                last_deck = last['deck']
+        self.ent_format.insert(0, last_format)
         self.ent_format.pack()
 
         self.txt_deck = tk.Label(frame, text="My Deck")
         self.txt_deck.pack()
 
         self.ent_deck = tk.Entry(frame)
-        self.ent_deck.insert(0,self.db.getRecord(0)['deck'])
+        self.ent_deck.insert(0, last_deck)
         self.ent_deck.pack()
 
         self.txt_opp_deck = tk.Label(frame, text="Opp Deck")
