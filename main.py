@@ -62,6 +62,9 @@ class App:
         self.widgets[name].pack(side=side)
 
     def save(self):
+        if not self.shouldSave():
+            print "Not Saving"
+            return
         record = {
             "g1": self.g1.get(),
             "g2": self.g2.get(),
@@ -81,15 +84,23 @@ class App:
         self.db.addRecord(record)
         self.widgets['opp_deck'].delete(0,tk.END)
         self.widgets['notes'].delete(0,tk.END)
-        self.g1 = tk.StringVar()
+        self.g1.set('')
         self.widgets['w_g1'].deselect()
         self.widgets['l_g1'].deselect()
-        self.g2 = tk.StringVar()
+        self.g2.set('')
         self.widgets['w_g2'].deselect()
         self.widgets['l_g2'].deselect()
-        self.g3 = tk.StringVar()
+        self.g3.set('')
         self.widgets['w_g3'].deselect()
         self.widgets['l_g3'].deselect()
+
+        self.widgets['save'].disabled = tk.FALSE
+
+    def shouldSave(self):
+        print self.g1.get()
+        if len(self.g1.get()) > 0:
+            return True
+        return False
 
 db = Ragnarok('records.db')
 root = tk.Tk()
