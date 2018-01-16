@@ -98,9 +98,13 @@ class App:
 
     def shouldSave(self):
         print self.g1.get()
-        if len(self.g1.get()) > 0:
-            return True
-        return False
+        if len(self.g1.get()) == 0:
+            return False
+        if len(self.widgets['format'].get()) == 0:
+            return False
+        if len(self.widgets['deck'].get()) == 0:
+            return False
+        return True
 
 db = Ragnarok('records.db')
 root = tk.Tk()
