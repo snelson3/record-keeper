@@ -1,6 +1,7 @@
 import os, shutil
 from rkeeper.TextDB import TextDB
 from unittest import TestCase
+import time
 
 TEST_PATH = "TextDB-tests"
 TEST_TXT = os.path.join(TEST_PATH, "test.txt")
@@ -75,3 +76,22 @@ class TestTextDB(TestCase):
         self.assertDictEqual(db.getRecord(2), {"b": True})
         self.assertDictEqual(db.getRecord(-1), {"a": True})
         self.assertIsNone(db.getRecord(9001))
+
+    def test_getResults(self):
+        self._mkScratchDir()
+        db = TextDB(TEST_TXT)
+        self.assertEqual(len(db.getResults()), 0)
+        db.addRecord({"format": "standard", "deck": "Temur", "opp_deck": "Temur Black", "time": time.time()-50})
+        db.addRecord({"format": "standard", "deck": "Temur", "opp_deck": "GPG", "time": time.time() - 60})
+        db.addRecord({"format": "standard", "deck": "Ramunap", "opp_deck": "Temur Black", "time": time.time() - 70})
+        db.addRecord({"format": "modern", "deck": "UW", "opp_deck": "Temur", "time": time.time() - 80})
+        db.addRecord({"format": "modern", "deck": "UW", "opp_deck": "Temur", "time": time.time() - 90})
+        db.addRecord({"format": "legacy", "deck": "Grixis", "opp_deck": "Temur", "time": time.time() - 100})
+        db.addRecord({"format": "legacy", "deck": "Taxes", "opp_deck": "Temur", "time": time.time() - 110})
+        self.assertEqual(len(db.getResults()), 7)
+        self.assertEqual(len(db.getResults(format='modern')), 2)
+        self.assertEqual(len(db.getResults(deck='Taxes')), 1)
+        self.assertEqual(len(db.getResults(opp_deck='GPG')), 1)
+        self.assertEqual(len(db.getResults(time=time.time() - 85)), 4)
+        self.assertEqual(len(db.getResults(format='standard', deck='Temur', opp_deck='Temur Black', time=60)), 1)
+        self.assertEqual(len(db.getResults(format='vinatge')), 0)

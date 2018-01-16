@@ -48,3 +48,20 @@ class TextDB():
         if i >= len(self.records):
             return None
         return list(reversed(self.records))[i]
+
+    def getResults(self, format=None, deck=None, opp_deck=None, time=None):
+        def f(rec):
+            if format:
+                if 'format' not in rec or rec['format'] != format:
+                    return False
+            if deck:
+                if 'deck' not in rec or rec['deck'] != deck:
+                    return False
+            if opp_deck:
+                if 'opp_deck' not in rec or rec['opp_deck'] != opp_deck:
+                    return False
+            if time:
+                if 'time' not in rec or float(rec['time']) < time:
+                    return False
+            return True
+        return filter(f, self.records)
