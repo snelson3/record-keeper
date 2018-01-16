@@ -16,7 +16,6 @@ class TextDB():
                     continue
                 line = line.strip()
                 try:
-                    print line
                     json.loads(line)
                 except Exception as err:
                     raise Exception("Could not parse line {}, err: {}".format(line, err))

@@ -1,0 +1,11 @@
+disable button when info not filled in. b03/1 option, comment b03 not working
+when bo1 hide game
+clear wins properly
+save wins properly
+dropdown for my deck/opp deck sorted based on odds to play against it (also should be filtered based on selected format)
+dropdown for format sorted by most recently played
+second tab for viewing stats
+    wins/losses/win%
+    filters for data
+
+mongodb option is next probably, or graphs
