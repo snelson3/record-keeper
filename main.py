@@ -1,6 +1,7 @@
 import Tkinter as tk
 from rkeeper.Ragnarok import Ragnarok
 import time
+from autocomplete import Combobox_Autocomplete as autobox
 
 class App:
     def __init__(self, master, db):
@@ -13,7 +14,7 @@ class App:
         frame = tk.Frame(master)
         frame.pack()
 
-        self.widgets['label_greeting'] = tk.Label(frame, text="This is introductory text for the program")
+        self.widgets['label_greeting'] = tk.Label(frame, text="This is a program to keep track of MTGA records")
         self.widgets['label_greeting'].pack()
 
         last = self.db.getRecord()
