@@ -11,5 +11,5 @@ class Ragnarok:
     def getRecord(self, i=0):
         return self.db.getRecord(i)
 
-    def getResults(self, format=None, deck=None, opp_deck=None, time=None):
-        return self.db.getResults(self, format=format, deck=deck, opp_deck=opp_deck, time=time)
+    def getResults(self, selectedFormat=None, deck=None, opp_deck=None, time=None):
+        return self.db.getResults(selectedFormat=selectedFormat, deck=deck, opp_deck=opp_deck, time=time)

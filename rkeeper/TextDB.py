@@ -49,10 +49,10 @@ class TextDB():
             return None
         return list(reversed(self.records))[i]
 
-    def getResults(self, format=None, deck=None, opp_deck=None, time=None):
+    def getResults(self, selectedFormat=None, deck=None, opp_deck=None, time=None):
         def f(rec):
-            if format:
-                if 'format' not in rec or rec['format'] != format:
+            if selectedFormat:
+                if 'format' not in rec or rec['format'] != selectedFormat:
                     return False
             if deck:
                 if 'deck' not in rec or rec['deck'] != deck:

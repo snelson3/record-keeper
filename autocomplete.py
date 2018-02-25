@@ -258,6 +258,9 @@ class Combobox_Autocomplete(Entry, object):
                 self._listbox.activate(index)
         return "break"
 
+    def addUniqueItemToList(self,itm):
+        self.list_of_items.add(itm)
+
 if __name__ == '__main__':
     try:
         from Tkinter import Tk
