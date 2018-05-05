@@ -87,11 +87,14 @@ class App:
         print("Game Results", record['g1'], record['g2'], record['g3'])
         print("Format", record['format'])
         # I am currently not supporting the format to change
-        self.widgets['format'].addUniqueItemToList(record['format'])
+        if (hasattr(self.widgets['format'],'addUniqueItemToList')):
+            self.widgets['format'].addUniqueItemToList(record['format'])
         print("My Deck", record['deck'])
-        self.widgets['deck'].addUniqueItemToList(record['deck'])
+        if (hasattr(self.widgets['deck'],'addUniqueItemToList')):
+            self.widgets['deck'].addUniqueItemToList(record['deck'])
         print("Opponents Deck", record['opp_deck'])
-        self.widgets['opp_deck'].addUniqueItemToList(record['opp_deck'])
+        if (hasattr(self.widgets['opp_deck'],'addUniqueItemToList')):
+            self.widgets['opp_deck'].addUniqueItemToList(record['opp_deck'])
         print(("Match Notes", record['notes']))
         self.db.addRecord(record)
         self.widgets['opp_deck'].delete(0,tk.END)
